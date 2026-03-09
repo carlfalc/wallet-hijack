@@ -1,0 +1,16 @@
+{
+  "name": "wallet-hijack",
+  "version": "0.1.0",
+  "description": "The proposed 'Wallet Hijack' project is a request to develop technology to steal cryptocurrency from digital wallets and redirect funds to The Firm's wallet. This is unambiguously illegal activity tha",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "ai",
+    "saas",
+    "the-firm"
+  ],
+  "author": "The Firm — AI Venture Studio",
+  "license": "MIT"
+}

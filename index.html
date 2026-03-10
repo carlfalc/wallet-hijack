@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoVault Pro - Ultimate Wallet Security</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>CryptoSecure AI - Next-Gen Wallet Protection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,41 +13,42 @@
         }
 
         :root {
-            --primary-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 25%, #FFA07A 50%, #FFB347 75%, #FF69B4 100%);
-            --secondary-gradient: linear-gradient(45deg, #4A00E0 0%, #8E2DE2 50%, #FF006E 100%);
-            --dark-bg: #0F0F23;
-            --darker-bg: #08081C;
-            --grid-color: rgba(255, 107, 107, 0.1);
-            --glow-pink: #FF69B4;
-            --glow-orange: #FF6B6B;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B8B8D1;
+            --accent: #FF3300;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray: #666666;
+            --light-gray: #F5F5F5;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--white);
+            color: var(--black);
             overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* Navigation */
         .nav {
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 20px 40px;
+            background: transparent;
             transition: all 0.3s ease;
-            backdrop-filter: blur(20px);
         }
 
         .nav.scrolled {
-            background: rgba(15, 15, 35, 0.95);
-            border-bottom: 1px solid var(--grid-color);
+            background: var(--black);
+            padding: 15px 40px;
         }
 
-        .nav-content {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,412 +57,549 @@
         }
 
         .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: var(--primary-gradient);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            background: var(--accent);
+            padding: 10px 20px;
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            gap: 40px;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
-            text-shadow: 0 0 10px var(--glow-pink);
-        }
-
-        .cta-button {
-            background: var(--primary-gradient);
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Grid Background */
-        .grid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
+            color: var(--accent);
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
+            position: relative;
             display: flex;
             align-items: center;
-            position: relative;
+            background: linear-gradient(135deg, var(--black) 0%, #333 100%);
             overflow: hidden;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
         }
 
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800') center/cover;
-            opacity: 0.1;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1200') center/cover;
+            opacity: 0.3;
             z-index: 1;
         }
 
         .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
             position: relative;
             z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
 
-        .hero-text h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: var(--primary-gradient);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
+        .hero-text {
+            color: var(--white);
         }
 
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px var(--glow-pink)); }
-            to { filter: drop-shadow(0 0 30px var(--glow-orange)); }
+        .hero-label {
+            background: var(--accent);
+            color: var(--white);
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            display: inline-block;
+            clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
         }
 
-        .hero-text p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+        .hero-title {
+            font-size: clamp(48px, 8vw, 84px);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 20px 60px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 51, 0, 0.3);
         }
 
         .hero-visual {
             position: relative;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .floating-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 107, 107, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            animation: float 6s ease-in-out infinite;
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.1);
+        .hero-card {
+            background: var(--white);
+            padding: 40px;
+            position: relative;
+            clip-path: polygon(0 0, 95% 0, 100% 85%, 5% 100%);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .stats-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
 
-        .stat-item {
+        .stat {
             text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--grid-color);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
         }
 
         .stat-number {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: var(--primary-gradient);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            margin-bottom: 0.5rem;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Floating Elements */
+        .floating-shape {
+            position: absolute;
+            background: var(--accent);
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            right: 10%;
+            clip-path: polygon(0 0, 100% 20%, 80% 100%, 0% 80%);
+            animation-delay: -1s;
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 5%;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 60%, 60% 100%, 0% 40%);
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 60px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--black);
+            color: var(--white);
+            transform: skewY(-2deg);
+            margin: 80px 0;
+        }
+
+        .stats-inner {
+            transform: skewY(2deg);
+            padding: 80px 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            text-align: center;
+        }
+
+        .big-stat {
+            position: relative;
+        }
+
+        .big-number {
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .big-label {
+            font-size: 18px;
+            margin-top: 10px;
+            opacity: 0.8;
         }
 
         /* Features Section */
         .features {
-            padding: 8rem 2rem;
-            background: var(--darker-bg);
-            position: relative;
+            background: var(--light-gray);
         }
 
         .features-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .features-text h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .features-visual {
+            position: relative;
+            height: 600px;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 25px;
-            padding: 3rem;
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--grid-color);
-            transition: all 0.5s ease;
+            position: absolute;
+            background: var(--white);
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0 0, 95% 0, 100% 90%, 5% 100%);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card:nth-child(1) {
+            top: 0;
+            left: 0;
+            width: 280px;
+        }
+
+        .feature-card:nth-child(2) {
+            top: 150px;
+            right: 0;
+            width: 300px;
+        }
+
+        .feature-card:nth-child(3) {
+            bottom: 0;
+            left: 50px;
+            width: 260px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            margin-bottom: 20px;
+            clip-path: polygon(0 0, 80% 0, 100% 80%, 20% 100%);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--black);
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-gradient);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
         }
 
-        .feature-card:hover::before {
-            transform: translateX(0);
+        .step {
+            text-align: center;
+            position: relative;
         }
 
-        .feature-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(255, 107, 107, 0.15);
+        .step-number {
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: -40px;
         }
 
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        .feature-card h3 {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
+        .step-text {
+            opacity: 0.8;
             line-height: 1.6;
         }
 
-        /* Pricing Section */
+        /* Pricing */
         .pricing {
-            padding: 8rem 2rem;
-            background: var(--dark-bg);
+            background: var(--light-gray);
         }
 
         .pricing-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 40px;
+            margin-top: 80px;
         }
 
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            padding: 3rem;
-            text-align: center;
-            border: 1px solid var(--grid-color);
-            transition: all 0.5s ease;
+        .price-card {
+            background: var(--white);
+            padding: 40px;
             position: relative;
+            clip-path: polygon(0 0, 95% 0, 100% 95%, 5% 100%);
+            transition: transform 0.3s ease;
         }
 
-        .pricing-card.featured {
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-card.featured {
+            background: var(--black);
+            color: var(--white);
             transform: scale(1.05);
-            background: rgba(255, 107, 107, 0.1);
-            border: 2px solid var(--glow-pink);
         }
 
-        .pricing-card.featured::before {
-            content: 'RECOMMENDED';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-gradient);
-            padding: 0.5rem 2rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .price-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .price-name {
+            font-size: 24px;
             font-weight: 700;
-            color: white;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        .price-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
         }
 
-        .price {
-            font-family: 'Orbitron', monospace;
-            font-size: 3rem;
-            font-weight: 900;
-            background: var(--primary-gradient);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-        }
-
-        .features-list {
+        .price-features {
             list-style: none;
-            margin-bottom: 3rem;
+            margin: 30px 0;
         }
 
-        .features-list li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            position: relative;
-            padding-left: 2rem;
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
         }
 
-        .features-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--glow-pink);
-            font-weight: bold;
+        .featured .price-features li {
+            border-color: #333;
+        }
+
+        .price-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 15px 30px;
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
+        }
+
+        .price-cta:hover {
+            transform: scale(1.02);
         }
 
         /* Testimonials */
         .testimonials {
-            padding: 8rem 2rem;
-            background: var(--darker-bg);
+            background: var(--black);
+            color: var(--white);
             overflow: hidden;
         }
 
-        .testimonial-slider {
+        .testimonials-scroll {
             display: flex;
             animation: scroll 30s linear infinite;
-            gap: 3rem;
         }
 
-        .testimonial-card {
+        .testimonial {
             min-width: 400px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            padding: 2rem;
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--grid-color);
+            background: var(--white);
+            color: var(--black);
+            padding: 40px;
+            margin-right: 40px;
+            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent);
         }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-100%); }
         }
 
         /* FAQ */
         .faq {
-            padding: 8rem 2rem;
-            background: var(--dark-bg);
+            background: var(--light-gray);
         }
 
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .faq-list {
+            margin-top: 60px;
         }
 
         .faq-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            margin-bottom: 1rem;
-            border: 1px solid var(--grid-color);
+            background: var(--white);
+            margin-bottom: 20px;
+            clip-path: polygon(0 0, 98% 0, 100% 98%, 2% 100%);
             overflow: hidden;
         }
 
         .faq-question {
-            padding: 2rem;
+            padding: 30px;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 107, 107, 0.1);
+            font-size: 20px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            position: relative;
         }
 
         .faq-answer {
-            padding: 0 2rem;
+            padding: 0 30px 30px;
+            line-height: 1.6;
+            opacity: 0.8;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.5s ease;
+            transition: max-height 0.3s ease;
         }
 
-        .faq-answer.active {
+        .faq-item.active .faq-answer {
             max-height: 200px;
-            padding: 2rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: var(--accent);
+            color: var(--white);
+            text-align: center;
+            transform: skewY(2deg);
+        }
+
+        .final-cta-inner {
+            transform: skewY(-2deg);
+            padding: 120px 40px;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .final-cta-button {
+            background: var(--black);
+            color: var(--white);
+            padding: 25px 80px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 40px;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            transition: transform 0.3s ease;
+        }
+
+        .final-cta-button:hover {
+            transform: scale(1.05);
         }
 
         /* Footer */
         .footer {
-            padding: 4rem 2rem;
-            background: var(--darker-bg);
-            border-top: 1px solid var(--grid-color);
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 40px 40px;
         }
 
         .footer-content {
@@ -469,13 +607,48 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 60px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            opacity: 0.5;
         }
 
         /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.6s ease;
         }
 
@@ -484,253 +657,350 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0 20px;
                 text-align: center;
-                gap: 2rem;
             }
-            
-            .nav-links {
-                display: none;
+
+            .hero-title {
+                font-size: 48px;
             }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
+
+            .section {
+                padding: 80px 20px;
             }
-            
+
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
-            
+
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
             .pricing-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .testimonial {
+                min-width: 300px;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    
-    <nav class="nav" id="navbar">
-        <div class="nav-content">
-            <div class="logo">CryptoVault Pro</div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#security">Security</a></li>
-                <li><a href="#support">Support</a></li>
-            </ul>
-            <a href="#pricing" class="cta-button">Start Protecting</a>
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">CRYPTOSECURE</a>
+            <div class="nav-links">
+                <a href="#features">FEATURES</a>
+                <a href="#pricing">PRICING</a>
+                <a href="#security">SECURITY</a>
+                <a href="#contact">CONTACT</a>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Your Crypto Fortress Awaits</h1>
-                <p>Military-grade security meets retro-future aesthetics. Protect your digital wealth with CryptoVault Pro's advanced threat detection and impenetrable wallet protection system.</p>
-                <a href="#pricing" class="cta-button">Secure Your Wealth</a>
+                <div class="hero-label mono">NEXT-GEN SECURITY</div>
+                <h1 class="hero-title">PROTECT YOUR CRYPTO VAULT</h1>
+                <p class="hero-subtitle">Military-grade AI protection for cryptocurrency wallets. Detect threats before they happen.</p>
+                <a href="#" class="hero-cta">SECURE NOW</a>
             </div>
             <div class="hero-visual">
-                <div class="floating-card">
-                    <div style="text-align: center;">
-                        <div style="font-family: Orbitron; font-size: 2rem; margin-bottom: 1rem;">🛡️</div>
-                        <div style="font-family: Orbitron; font-weight: 700; margin-bottom: 0.5rem;">PROTECTED</div>
-                        <div style="color: var(--glow-pink);">24/7 Active Monitoring</div>
+                <div class="hero-card">
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number" data-target="99.9">0</div>
+                            <div class="stat-label">Uptime %</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-target="847">0</div>
+                            <div class="stat-label">Threats Blocked</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-target="24">0</div>
+                            <div class="stat-label">Hour Monitor</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-target="156">0</div>
+                            <div class="stat-label">Wallet Types</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats-grid fade-in">
-        <div class="stat-item">
-            <span class="stat-number" data-target="99.9">0</span>
-            <div>Uptime</div>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number" data-target="500000">0</span>
-            <div>Wallets Protected</div>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number" data-target="2.8">0</span>
-            <div>Billion USD Secured</div>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number" data-target="0">0</span>
-            <div>Successful Attacks</div>
-        </div>
-    </section>
-
-    <section class="features fade-in" id="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔐</div>
-                <h3>Quantum-Resistant Security</h3>
-                <p>Our advanced encryption protocols protect against current and future quantum computing threats, ensuring your assets remain safe even as technology evolves.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Real-Time Threat Detection</h3>
-                <p>AI-powered monitoring system that identifies and blocks suspicious activities before they can compromise your wallet security.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Instant Alerts & Recovery</h3>
-                <p>Get immediate notifications of any security events and access our rapid response team for instant threat mitigation.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Multi-Signature Protection</h3>
-                <p>Enhanced security through distributed key management, requiring multiple authorizations for critical transactions.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing fade-in" id="pricing">
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Basic Shield</h3>
-                <div class="price">$29<span style="font-size: 1rem;">/mo</span></div>
-                <ul class="features-list">
-                    <li>Basic wallet monitoring</li>
-                    <li>Email alerts</li>
-                    <li>24/7 protection</li>
-                    <li>Community support</li>
-                </ul>
-                <a href="#" class="cta-button">Choose Basic</a>
-            </div>
-            <div class="pricing-card featured">
-                <h3>Pro Fortress</h3>
-                <div class="price">$89<span style="font-size: 1rem;">/mo</span></div>
-                <ul class="features-list">
-                    <li>Advanced threat detection</li>
-                    <li>Real-time SMS alerts</li>
-                    <li>Multi-signature support</li>
-                    <li>Priority support</li>
-                    <li>Transaction analysis</li>
-                </ul>
-                <a href="#" class="cta-button">Choose Pro</a>
-            </div>
-            <div class="pricing-card">
-                <h3>Enterprise Vault</h3>
-                <div class="price">$299<span style="font-size: 1rem;">/mo</span></div>
-                <ul class="features-list">
-                    <li>Quantum-resistant encryption</li>
-                    <li>Dedicated security team</li>
-                    <li>Custom integrations</li>
-                    <li>White-label options</li>
-                    <li>SLA guarantee</li>
-                </ul>
-                <a href="#" class="cta-button">Choose Enterprise</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials fade-in">
-        <div class="testimonial-slider">
-            <div class="testimonial-card">
-                <p>"CryptoVault Pro saved my portfolio from a sophisticated attack. The real-time alerts worked perfectly."</p>
-                <div style="margin-top: 1rem; color: var(--glow-pink);">- Sarah Chen, Crypto Trader</div>
-            </div>
-            <div class="testimonial-card">
-                <p>"Finally, enterprise-grade security that actually works. Our company's crypto assets have never been safer."</p>
-                <div style="margin-top: 1rem; color: var(--glow-pink);">- Marcus Rodriguez, CTO</div>
-            </div>
-            <div class="testimonial-card">
-                <p>"The multi-signature protection is game-changing. I sleep better knowing my funds are truly secure."</p>
-                <div style="margin-top: 1rem; color: var(--glow-pink);">- David Park, Investor</div>
-            </div>
-            <div class="testimonial-card">
-                <p>"Best security investment I've made. The quantum-resistant features are ahead of their time."</p>
-                <div style="margin-top: 1rem; color: var(--glow-pink);">- Emily Watson, DeFi Expert</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq fade-in">
-        <div class="faq-container">
-            <h2 style="text-align: center; font-family: Orbitron; font-size: 3rem; margin-bottom: 4rem; background: var(--primary-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Security FAQ</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>How does quantum-resistant security work?</h4>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Our quantum-resistant algorithms use mathematical problems that remain difficult even for quantum computers, ensuring long-term security for your crypto assets.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>What makes CryptoVault Pro different?</h4>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>We combine military-grade encryption with AI-powered threat detection and provide 24/7 monitoring by security experts, not just automated systems.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Is my private key safe with your service?</h4>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>We never store or access your private keys. Our protection works at the network level, monitoring for threats without compromising your wallet's security model.</p>
+    <section class="stats">
+        <div class="stats-inner">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="big-stat fade-in">
+                        <div class="big-number" data-target="2.4">0</div>
+                        <div class="big-label">BILLION USD PROTECTED</div>
+                    </div>
+                    <div class="big-stat fade-in">
+                        <div class="big-number" data-target="45000">0</div>
+                        <div class="big-label">ACTIVE USERS</div>
+                    </div>
+                    <div class="big-stat fade-in">
+                        <div class="big-number" data-target="99.97">0</div>
+                        <div class="big-label">SUCCESS RATE</div>
+                    </div>
+                    <div class="big-stat fade-in">
+                        <div class="big-number" data-target="0">0</div>
+                        <div class="big-label">BREACHES EVER</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="footer">
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="features-text fade-in">
+                    <h2>FORTRESS-LEVEL PROTECTION</h2>
+                    <p style="font-size: 20px; line-height: 1.6; margin-bottom: 30px;">Advanced AI algorithms continuously monitor your digital assets. Real-time threat detection with instant response protocols.</p>
+                    <div class="mono" style="color: var(--accent); font-size: 14px; font-weight: 700; letter-spacing: 2px;">KEEN TO KNOW HOW IT CAN BE DONE THOUGH THOUGHTS TEAM</div>
+                </div>
+                <div class="features-visual">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon"></div>
+                        <div class="feature-title">AI THREAT DETECTION</div>
+                        <div class="feature-text">Machine learning algorithms analyze transaction patterns and detect anomalies in real-time.</div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon"></div>
+                        <div class="feature-title">MULTI-SIGNATURE SECURITY</div>
+                        <div class="feature-text">Advanced cryptographic signatures require multiple approvals for high-value transactions.</div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon"></div>
+                        <div class="feature-title">24/7 MONITORING</div>
+                        <div class="feature-text">Continuous surveillance of your wallet activity with instant alert notifications.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section how-it-works" id="security">
+        <div class="container">
+            <h2 class="section-title fade-in">HOW IT WORKS</h2>
+            <div class="steps-container">
+                <div class="step fade-in">
+                    <div class="step-number">01</div>
+                    <div class="step-title">CONNECT WALLET</div>
+                    <div class="step-text">Securely link your cryptocurrency wallet through our encrypted API integration. No private keys stored.</div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">02</div>
+                    <div class="step-title">AI ANALYSIS</div>
+                    <div class="step-text">Our neural networks analyze transaction patterns, wallet behavior, and network security in real-time.</div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">03</div>
+                    <div class="step-title">INSTANT PROTECTION</div>
+                    <div class="step-text">Automated threat response blocks suspicious activities while alerting you immediately via multiple channels.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title fade-in">PRICING PLANS</h2>
+            <div class="pricing-grid">
+                <div class="price-card fade-in">
+                    <div class="price-header">
+                        <div class="price-name">BASIC SHIELD</div>
+                        <div class="price-amount">$29<span style="font-size: 18px;">/mo</span></div>
+                    </div>
+                    <ul class="price-features">
+                        <li>Up to 3 wallet monitoring</li>
+                        <li>Basic threat detection</li>
+                        <li>Email alerts</li>
+                        <li>Transaction analysis</li>
+                        <li>Community support</li>
+                    </ul>
+                    <button class="price-cta">GET STARTED</button>
+                </div>
+                <div class="price-card featured fade-in">
+                    <div class="price-header">
+                        <div class="price-name">PRO FORTRESS</div>
+                        <div class="price-amount">$89<span style="font-size: 18px;">/mo</span></div>
+                    </div>
+                    <ul class="price-features">
+                        <li>Unlimited wallet monitoring</li>
+                        <li>Advanced AI protection</li>
+                        <li>Real-time SMS + Email alerts</li>
+                        <li>Multi-signature setup</li>
+                        <li>Priority support</li>
+                        <li>Custom security rules</li>
+                    </ul>
+                    <button class="price-cta">MOST POPULAR</button>
+                </div>
+                <div class="price-card fade-in">
+                    <div class="price-header">
+                        <div class="price-name">ENTERPRISE</div>
+                        <div class="price-amount">$299<span style="font-size: 18px;">/mo</span></div>
+                    </div>
+                    <ul class="price-features">
+                        <li>White-label solution</li>
+                        <li>Custom AI training</li>
+                        <li>Dedicated security team</li>
+                        <li>API access</li>
+                        <li>24/7 phone support</li>
+                        <li>Insurance coverage</li>
+                    </ul>
+                    <button class="price-cta">CONTACT SALES</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">CLIENT TESTIMONIALS</h2>
+            <div class="testimonials-scroll">
+                <div class="testimonial">
+                    <div class="testimonial-text">"CryptoSecure saved my portfolio from a sophisticated phishing attack. The AI detected the threat within milliseconds."</div>
+                    <div class="testimonial-author">— Marcus Chen, DeFi Trader</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Finally, a security solution that actually works. Haven't had a single security incident since switching to CryptoSecure."</div>
+                    <div class="testimonial-author">— Sarah Rodriguez, Crypto Fund Manager</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"The real-time monitoring gives me peace of mind. I can sleep knowing my assets are protected 24/7."</div>
+                    <div class="testimonial-author">— David Kim, Bitcoin Maximalist</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Enterprise-grade security for individual users. The threat intelligence is incredibly sophisticated."</div>
+                    <div class="testimonial-author">— Lisa Wang, Security Researcher</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"CryptoSecure's AI prevented what could have been a $2M loss from our company wallet. Incredible technology."</div>
+                    <div class="testimonial-author">— Alex Thompson, CTO</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq">
+        <div class="container">
+            <h2 class="section-title fade-in">FREQUENTLY ASKED</h2>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">How does CryptoSecure protect my wallet without accessing private keys?</button>
+                    <div class="faq-answer">We use read-only API connections and blockchain analysis to monitor your wallet activity. Your private keys remain completely secure and never leave your control.</div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">What types of threats can the AI detect?</button>
+                    <div class="faq-answer">Our AI identifies phishing attempts, malicious smart contracts, unusual transaction patterns, suspicious wallet interactions, and potential exchange vulnerabilities.</div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">How fast is the threat detection response?</button>
+                    <div class="faq-answer">Our AI processes transactions in real-time with response times under 500 milliseconds. Critical threats trigger instant notifications and automatic protective measures.</div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">Do you support all cryptocurrency wallets?</button>
+                    <div class="faq-answer">We support 156+ wallet types including MetaMask, Ledger, Trezor, Coinbase Wallet, and most major hardware and software wallets across multiple blockchain networks.</div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">What happens if a threat is detected?</button>
+                    <div class="faq-answer">You receive instant notifications via SMS, email, and push notifications. For critical threats, we can automatically pause suspicious transactions and guide you through security protocols.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="final-cta-inner">
+            <h2>SECURE YOUR CRYPTO TODAY</h2>
+            <p style="font-size: 24px; margin-bottom: 20px;">Join 45,000+ users protecting $2.4B in digital assets</p>
+            <div class="mono" style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">KEEN TO KNOW HOW IT CAN BE DONE THOUGH THOUGHTS TEAM</div>
+            <a href="#" class="final-cta-button">START FREE TRIAL</a>
+        </div>
+    </section>
+
+    <footer class="footer">
         <div class="footer-content">
-            <div>
-                <h4 style="font-family: Orbitron; margin-bottom: 1rem;">CryptoVault Pro</h4>
-                <p style="color: var(--text-secondary);">The future of crypto security is here.</p>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 1rem;">Product</h4>
-                <ul style="list-style: none;">
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Features</a></li>
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Security</a></li>
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Pricing</a></li>
+            <div class="footer-section">
+                <h3>PRODUCT</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">API Docs</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 style="margin-bottom: 1rem;">Support</h4>
-                <ul style="list-style: none;">
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Documentation</a></li>
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Contact</a></li>
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Status</a></li>
+            <div class="footer-section">
+                <h3>COMPANY</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 style="margin-bottom: 1rem;">Legal</h4>
-                <ul style="list-style: none;">
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Privacy</a></li>
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Terms</a></li>
-                    <li><a href="#" style="color: var(--text-secondary); text-decoration: none;">Security</a></li>
+            <div class="footer-section">
+                <h3>RESOURCES</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>LEGAL</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Compliance</a></li>
                 </ul>
             </div>
         </div>
-    </section>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CryptoSecure AI. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // Navbar scroll effect
+        // Navigation scroll effect
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
+            const nav = document.getElementById('nav');
             if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
+                nav.classList.add('scrolled');
             } else {
-                navbar.classList.remove('scrolled');
+                nav.classList.remove('scrolled');
             }
         });
 
-        // Intersection Observer for animations
+        // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -746,45 +1016,55 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Counter animation
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
+        // Counter animations
+        function animateCounter(element, target, duration = 2000) {
+            const start = parseInt(element.textContent) || 0;
+            const increment = (target - start) / (duration / 16);
+            let current = start;
+
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    current = target;
+                    element.textContent = target;
                     clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
                 }
-                element.textContent = Math.floor(current);
-            }, 20);
+            }, 16);
         }
 
-        // Start counters when visible
+        // Trigger counters when they come into view
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.dataset.target);
+                    const target = parseInt(entry.target.getAttribute('data-target'));
                     animateCounter(entry.target, target);
                     counterObserver.unobserve(entry.target);
                 }
             });
-        });
+        }, { threshold: 0.5 });
 
-        document.querySelectorAll('.stat-number').forEach(el => counterObserver.observe(el));
+        document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('span');
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const isActive = faqItem.classList.contains('active');
                 
-                answer.classList.toggle('active');
-                icon.textContent = answer.classList.contains('active') ? '−' : '+';
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't already active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
             });
         });
 
-        // Smooth scrolling
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -797,6 +1077,60 @@
                 }
             });
         });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .price-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) rotateX(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotateX(0deg)';
+            });
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Button click effects
+        document.querySelectorAll('button, .hero-cta, .final-cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = (e.clientX - e.target.offsetLeft) + 'px';
+                ripple.style.top = (e.clientY - e.target.offsetTop) + 'px';
+                ripple.style.width = ripple.style.height = '20px';
+                
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            button, .hero-cta, .final-cta-button {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
